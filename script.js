@@ -13,6 +13,7 @@ function showContent() {
   const container = document.getElementById("container");
   container.textContent = ""; // Tømmer containeren før vi viser produktene
 
+  // Looper gjennom produkter og appender dem til siden
   for (let produkt of produkter) {
     const div = document.createElement("div");
     div.className = "produkt";
@@ -44,7 +45,7 @@ function showContent() {
     container.appendChild(div);
   }
 }
-
+// legger til produkter i handlekurven
 function leggTilIHandlekurv(produkt) {
   // Sjekk om produktet allerede finnes i handlekurven
   if (handlekurv[produkt.navn]) {
@@ -60,6 +61,7 @@ function leggTilIHandlekurv(produkt) {
   visHandlekurv();
 }
 
+// Viser produktene i handlekurven
 function visHandlekurv() {
   const handlekurvContainer = document.getElementById("handlekurv");
   handlekurvContainer.textContent = ""; // Tømmer handlekurven før vi viser den
@@ -69,7 +71,7 @@ function visHandlekurv() {
     const produkt = handlekurv[produktNavn];
 
     const item = document.createElement("p");
-    // Hvis antall > 1, vis "xN" for antallet
+    // Hvis antall > 1, vis "x$" for antallet
     if (produkt.antall > 1) {
       item.textContent = `${produkt.navn} x${produkt.antall} – ${
         produkt.pris * produkt.antall
@@ -100,7 +102,7 @@ function visHandlekurv() {
     handlekurvContainer.appendChild(knapp);
   }
 }
-
+// resetter handlekurven
 function tømHandlekurv() {
   handlekurv = {}; // Tøm handlekurven
   totalPris = 0;
